@@ -1,4 +1,4 @@
-/**
+/*
  * This sorting plug-in for DataTables will correctly sort data in date
  * format typically used in Finland - `dd.mm.YYYY`. Plug-in offers 
  * also sorting for date range in the format of `dd.mm.YYYY - dd.mm.YYYY`
@@ -21,48 +21,46 @@
 	"fi_date-asc": function ( a, b ) {
 		var x, y;
 		if ($.trim(a) !== '') {
-			var deDatea = $.trim(a).split(' ');
-			var deDatea2 = deDatea[0].split('.');
-			x = (deDatea2[2] + deDatea2[1] + deDatea2[0]) * 1;
+			var deDatea = $.trim(a).split('.');
+			x = (deDatea[2] + deDatea[1] + deDatea[0]) * 1;
 		} else {
-			x = Infinity; // = l'an 1000 ...
+		    x = 0;//Infinity; // = l'an 1000 ...
 		}
 
 		if ($.trim(b) !== '') {
-			var deDateb = $.trim(b).split(' ');
-			deDateb = deDateb[0].split('.');
+			var deDateb = $.trim(b).split('.');
 			y = (deDateb[2] + deDateb[1] + deDateb[0]) * 1;
 		} else {
-			y = Infinity;
+		    y = 0;//Infinity;
 		}
 		var z = ((x < y) ? -1 : ((x > y) ? 1 : 0));
+		console.log("X: " + x + " Y: " + y);
 		return z;
 	},
 
 	"fi_date-desc": function ( a, b ) {
 		var x, y;
 		if ($.trim(a) !== '') {
-			var deDatea = $.trim(a).split(' ');
-			var deDatea2 = deDatea[0].split('.');
-			x = (deDatea2[2] + deDatea2[1] + deDatea2[0]) * 1;
+			var deDatea = $.trim(a).split('.');
+			x = (deDatea[2] + deDatea[1] + deDatea[0]) * 1;
 		} else {
-			x = Infinity;
+		    x = 0;//Infinity;
 		}
 
 		if ($.trim(b) !== '') {
-			var deDateb = $.trim(b).split(' ');
-			deDateb = deDateb[0].split('.');
+			var deDateb = $.trim(b).split('.');
 			y = (deDateb[2] + deDateb[1] + deDateb[0]) * 1;
 		} else {
-			y = Infinity;
+		    y = 0;//Infinity;
 		}
 		var z = ((x < y) ? 1 : ((x > y) ? -1 : 0));
+		console.log("X: " + x + " Y: " + y);
 		return z;
 	}
 } );
 
  jQuery.extend( jQuery.fn.dataTableExt.oSort, {
-	"fi_date_range-asc": function ( a, b ) {
+	"fi_daterange-asc": function ( a, b ) {
 		var x, y;
 		if ($.trim(a) !== '') {
 			var deDatea = $.trim(a).split(' ');
@@ -83,7 +81,7 @@
 		return z;
 	},
 
-	"fi_date_range-desc": function ( a, b ) {
+	"fi_daterange-desc": function ( a, b ) {
 		var x, y;
 		if ($.trim(a) !== '') {
 			var deDatea = $.trim(a).split(' ');
@@ -104,5 +102,3 @@
 		return z;
 	}
 } );
-
-
